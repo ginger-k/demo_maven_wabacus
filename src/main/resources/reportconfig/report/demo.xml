@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+	<page id="demo">
+		<report id="report1" title="demo列表" type="editablelist2" dataexport="richexcel|word" >
+			<display>
+				<col column="user_id" label="编号"/>
+				<col column="user_name" label="用户名"/>
+				<col column="user_password" label="密码"/>
+			</display>
+			<sql>
+				 <select>
+					<value>
+						<![CDATA[select user_id,user_name,user_password from visual_user where {#condition#} order by user_id desc]]>
+					</value>
+					<condition label="用户名" name="txtname">
+						<value>
+							<![CDATA[user_name like '%#data#%']]>				
+						</value>
+					</condition>
+				</select>
+				<insert>
+					insert into visual_user (@{user_id},@{user_name},@{user_password});
+				</insert>
+				
+				<update>
+					update visual_user (@{user_name}) where user_id=@{user_id};
+				</update>
+				<delete>
+					delete from visual_user where user_id=@{user_id};
+				</delete>
+			</sql>
+		</report>
+	</page>
+</applications>
