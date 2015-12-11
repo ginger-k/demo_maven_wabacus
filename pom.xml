@@ -4,6 +4,11 @@
   <artifactId>demo_maven_wabacus</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+  </properties>
+  
   
   <dependencies>
 	  	<dependency>
