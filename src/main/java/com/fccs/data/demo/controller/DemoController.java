@@ -25,7 +25,7 @@ public class DemoController {
 	@RequestMapping(value="/demo/jsp")
 	public String jsp(){
 		System.out.println("controller demo --- --- ");
-		return "demo";
+		return "demo/demo";
 	}
 	
 	

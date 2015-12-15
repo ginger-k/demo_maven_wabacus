@@ -3,7 +3,10 @@
 			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
 	<page id="demo">
-		<report id="report1" title="demo列表" type="editablelist2" dataexport="richexcel|word" >
+		<report id="report1" title="request{titleName}" type="editablelist2" dataexport="richexcel|word" 
+			template="WEB-INF/jsp/demo/template.jsp" 
+			interceptor="com.fccs.data.demo.interceptor.ReportInterceptor"
+			>
 			<display>
 				<col column="user_id" label="编号"/>
 				<col column="user_name" label="用户名"/>
@@ -31,6 +34,13 @@
 					delete from visual_user where user_id=@{user_id};
 				</delete>
 			</sql>
+			<format>
+				<value>
+					<![CDATA[
+						user_password = "*" + user_password + "*";
+					]]>
+			    </value>
+			</format>
 		</report>
 	</page>
 </applications>
